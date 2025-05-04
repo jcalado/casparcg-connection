@@ -156,28 +156,42 @@ export interface DataRemoveParameters {
 }
 
 export interface CGLayer {
-	/** cgLayer (defaults to 1) */
-	cgLayer?: number
+	cgLayer: number
 }
 
-export interface CgAddParameters extends ChannelLayer, CGLayer {
+export interface CgAddParameters extends Channel, CGLayer {
+	layer?: number
 	template: string
 	/** If true, CasparCG will call play() in the template after load. */
 	playOnLoad: boolean
 	data?: Record<string, any> | string
 }
-export interface CgPlayParameters extends ChannelLayer, CGLayer {}
-export interface CgStopParameters extends ChannelLayer, CGLayer {}
-export interface CgNextParameters extends ChannelLayer, CGLayer {}
-export interface CgRemoveParameters extends ChannelLayer, CGLayer {}
-export type CgClearParameters = ChannelLayer
-export interface CgUpdateParameters extends ChannelLayer, CGLayer {
+export interface CgPlayParameters extends Channel, CGLayer {
+	layer?: number
+}
+export interface CgStopParameters extends Channel, CGLayer {
+	layer?: number
+}
+export interface CgNextParameters extends Channel, CGLayer {
+	layer?: number
+}
+export interface CgRemoveParameters extends Channel, CGLayer {
+	layer?: number
+}
+export type CgClearParameters = Channel & {
+	layer?: number
+}
+export interface CgUpdateParameters extends Channel, CGLayer {
+	layer?: number
 	data: string
 }
-export interface CgInvokeParameters extends ChannelLayer, CGLayer {
+export interface CgInvokeParameters extends Channel, CGLayer {
+	layer?: number
 	method: string
 }
-export type CgInfoParameters = ChannelLayer & CGLayer
+export type CgInfoParameters = Channel & Partial<CGLayer> & {
+	layer?: number
+}
 
 export interface MixerTween {
 	duration?: number
