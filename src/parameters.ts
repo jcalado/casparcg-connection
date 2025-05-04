@@ -209,14 +209,14 @@ export interface MixerKeyerParameters extends ChannelLayer {
 }
 export interface MixerChromaParameters extends ChannelLayer, MixerTween {
 	enable: boolean
-	targetHue: number
-	hueWidth: number
-	minSaturation: number
-	minBrightness: number
-	softness: number
-	spillSuppress: number
-	spillSuppressSaturation: number
-	showMask: boolean
+	targetHue?: number
+	hueWidth?: number
+	minSaturation?: number
+	minBrightness?: number
+	softness?: number
+	spillSuppress?: number
+	spillSuppressSaturation?: number
+	showMask?: boolean
 }
 export interface MixerBlendParameters extends ChannelLayer, MixerDefer {
 	value: BlendMode
